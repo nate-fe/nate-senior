@@ -1,0 +1,214 @@
+@import "tailwindcss";
+
+/*
+ * 시니어노트 앱: 나무 톤 팔레트. 세 색이 역할을 나눠 골고루 쓰인다.
+ *  - 카키(primary): 주요 버튼, 선택 상태, 포커스
+ *  - 브라운(wood): 내비게이션 패널(짙은 호두나무색), 보조 버튼, 표 머리, 링크, Pro 표시
+ *  - 어두운 오렌지(accent): 단계 번호·보호자 확인 등 눈길이 가야 할 곳
+ * 시니어·현장 인력을 고려해 기본 글자와 터치 영역은 크게 둔다.
+ */
+:root {
+  --background: #f5f5f3;
+  --surface: #ffffff;
+  --foreground: #241d16;
+  --subtle-foreground: #4d4539;
+  --muted: #f3f2ef;
+  --muted-strong: #e9e1d5;
+  --muted-foreground: #6f665a;
+  --placeholder: #aaa092;
+  --border: #e7e0d6;
+  --border-strong: #d2c8ba;
+
+  /* 카키 */
+  --primary: #6e6b3f;
+  --primary-strong: #55532f;
+  --primary-soft: #eeede2;
+  --primary-soft-hover: #e2e0d0;
+  --primary-foreground: #ffffff;
+
+  /* 브라운 */
+  --wood: #7a5233;
+  --wood-strong: #5c3d25;
+  --wood-soft: #f3ebe1;
+  --wood-soft-hover: #e9dccb;
+  --wood-dark: #3a2a1f;
+  --wood-dark-hover: #4a372a;
+  --wood-dark-foreground: #efe6d8;
+  --wood-dark-muted: #bfae98;
+
+  /* 어두운 오렌지 */
+  --accent: #c2410c;
+  --accent-strong: #9a3412;
+  --accent-soft: #fdeee4;
+  --accent-on-dark: #f0a36b;
+
+  /* 어두운 면(Pro 표시, 배너) = 짙은 호두나무색 */
+  --ink: #3a2a1f;
+
+  /* 해봄 햇살 노랑(해봄 테마에서 사용, 기본값만 둔다) */
+  --sun: #ffc233;
+
+  --success: #15803d;
+  --success-soft: #e7f6ec;
+  /* 기다리는 상태(보호자 확인 전): 오렌지와 겹치지 않는 머스터드 */
+  --pending: #a16207;
+  --pending-soft: #fdf6dc;
+  --danger: #c8321e;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-foreground: var(--foreground);
+  --color-subtle-foreground: var(--subtle-foreground);
+  --color-muted: var(--muted);
+  --color-muted-strong: var(--muted-strong);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-placeholder: var(--placeholder);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-primary: var(--primary);
+  --color-primary-strong: var(--primary-strong);
+  --color-primary-soft: var(--primary-soft);
+  --color-primary-soft-hover: var(--primary-soft-hover);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-wood: var(--wood);
+  --color-wood-strong: var(--wood-strong);
+  --color-wood-soft: var(--wood-soft);
+  --color-wood-soft-hover: var(--wood-soft-hover);
+  --color-wood-dark: var(--wood-dark);
+  --color-wood-dark-hover: var(--wood-dark-hover);
+  --color-wood-dark-foreground: var(--wood-dark-foreground);
+  --color-wood-dark-muted: var(--wood-dark-muted);
+  --color-accent: var(--accent);
+  --color-accent-strong: var(--accent-strong);
+  --color-accent-soft: var(--accent-soft);
+  --color-accent-on-dark: var(--accent-on-dark);
+  --color-ink: var(--ink);
+  --color-sun: var(--sun);
+  --color-pro: var(--ink);
+  --color-success: var(--success);
+  --color-success-soft: var(--success-soft);
+  --color-pending: var(--pending);
+  --color-pending-soft: var(--pending-soft);
+  /* 가입 대기 같은 주의 상태는 포인트 컬러로 통일한다 */
+  --color-warning: var(--accent);
+  --color-warning-soft: var(--accent-soft);
+  --color-danger: var(--danger);
+  --font-sans: "Pretendard Variable", Pretendard, -apple-system, system-ui, sans-serif;
+}
+
+/*
+ * 시니어노트 앱의 주 사용자는 50~70대 요양보호사다. 기본 글자를 20px로 두고
+ * 모든 크기를 rem으로 잡아 버튼·입력칸·여백이 함께 커지게 한다.
+ * 랜딩(네이트 시니어)은 기존 18px 기준으로 디자인했으므로 그 페이지에서만 되돌린다.
+ */
+html {
+  font-size: 20px;
+}
+
+html:has(.theme-landing) {
+  font-size: 18px;
+}
+
+/* 해봄은 구매자가 모든 연령이므로 시니어노트보다 한 단계 작게 둔다 */
+html:has(.theme-haebom) {
+  font-size: 18px;
+}
+
+/* 단, 시니어 판매자가 쓰는 화면(판매자 신청함)은 시니어노트와 같은 20px로 키운다 */
+html:has(.haebom-senior-view) {
+  font-size: 20px;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  letter-spacing: -0.01em;
+  word-break: keep-all;
+}
+
+h1,
+h2,
+h3 {
+  letter-spacing: -0.03em;
+}
+
+/*
+ * 기관용 랜딩 전용 테마. 같은 토큰 이름을 이 범위에서만 덮어써서
+ * 버튼·입력칸 포커스가 자동으로 오렌지가 되고, 바탕은 밝은 흰색·고대비로 바뀐다.
+ * 흰 글씨 + 오렌지(#dd6b3a) 대비는 약 3.4:1 이므로 오렌지 버튼은 큰 굵은 글씨로만 쓴다.
+ */
+.theme-landing {
+  --background: #f6f6f7;
+  --surface: #ffffff;
+  --foreground: #111113;
+  --subtle-foreground: #45454d;
+  --muted: #f3f3f5;
+  --muted-strong: #e7e7ea;
+  --muted-foreground: #6b6b75;
+  --placeholder: #a1a1aa;
+  --border: #e7e7ea;
+  --border-strong: #d4d4d8;
+
+  --primary: #dd6b3a;
+  --primary-strong: #c65a2b;
+  --primary-soft: #fdf0e9;
+  --primary-soft-hover: #fbe2d4;
+
+  /* 작은 글씨용 진한 오렌지(흰 바탕 대비 5:1 이상) */
+  --accent: #b5501f;
+  --accent-soft: #fdf0e9;
+  --accent-on-dark: #f59a6b;
+
+  --ink: #111113;
+
+  background: var(--surface);
+  color: var(--foreground);
+}
+
+/*
+ * 해봄 전용 테마. "해(햇살) + 봄"에서 따온 봄 초록(메인)과 햇살 노랑(포인트).
+ * 시니어노트와 같은 토큰 이름을 이 범위에서만 덮어써서 공용 버튼·카드·입력칸이 해봄 색이 된다.
+ * 글자 크기(20px 기준)와 큰 터치 영역 원칙은 시니어노트와 같다.
+ */
+.theme-haebom {
+  --background: #f5f8f3;
+  --surface: #ffffff;
+  --foreground: #16241b;
+  --subtle-foreground: #3f4d44;
+  --muted: #eef3ec;
+  --muted-strong: #dfe8db;
+  --muted-foreground: #5a675e;
+  --placeholder: #9aa69e;
+  --border: #e1e9dd;
+  --border-strong: #c9d5c4;
+
+  /* 메인: 봄 초록 (흰 글씨 대비 5:1 이상) */
+  --primary: #1f7a4c;
+  --primary-strong: #17613c;
+  --primary-soft: #e5f3ea;
+  --primary-soft-hover: #d3eadb;
+
+  /* 포인트: 햇살 노랑. 바탕에는 --sun, 작은 글씨에는 진한 --accent */
+  --sun: #ffc233;
+  --accent: #9a5b00;
+  --accent-soft: #fff3d6;
+  --accent-on-dark: #ffc94d;
+
+  /* 보조 버튼(secondary)이 쓰는 토큰을 햇살 톤으로 */
+  --wood: #8a5a00;
+  --wood-strong: #6b4400;
+  --wood-soft: #fff1cc;
+  --wood-soft-hover: #ffe6a6;
+
+  --ink: #16241b;
+
+  background: var(--background);
+  color: var(--foreground);
+}
+
+::selection {
+  background: var(--primary-soft-hover);
+}
