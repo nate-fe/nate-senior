@@ -1,4 +1,4 @@
-// PoC에서 구현된 화면 목록. /poc 페이지에서 서비스별 표로 보여 준다. 화면을 추가하면 여기에도 한 줄 추가한다.
+// PoC에서 구현된 화면 목록. 첫 화면(/)에서 서비스별 표로 보여 준다. 화면을 추가하면 여기에도 한 줄 추가한다.
 
 export type PocPage = {
   title: string;
@@ -14,7 +14,7 @@ export const POC_SERVICES: PocService[] = [
     name: "시니어노트",
     description: "요양기관 기록 · 보호자 알림장 (사용자 구분은 ?role=, 없으면 요양보호사)",
     pages: [
-      { title: "기관용 랜딩 (네이트 시니어)", href: "/", user: "기관 원장·관리자", device: "데스크톱" },
+      { title: "기관용 랜딩 (네이트 시니어)", href: "/seniornote", user: "기관 원장·관리자", device: "데스크톱" },
       { title: "대시보드", href: "/dashboard?role=caregiver", user: "김영숙 요양보호사", device: "모바일" },
       { title: "대시보드", href: "/dashboard?role=social_worker", user: "박지영 사회복지사", device: "데스크톱" },
       { title: "대시보드", href: "/dashboard?role=admin", user: "한경희 원장", device: "데스크톱" },
