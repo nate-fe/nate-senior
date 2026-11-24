@@ -143,14 +143,19 @@ html:has(.theme-haebom) {
   font-size: 18px;
 }
 
-/* 서비스 기획서(/senior): 회의실 한 화면을 여럿이 함께 보므로 넓은 화면에서 22px로 크게 둔다 */
+/*
+ * 서비스 기획서(/senior): 회의실 한 화면을 여럿이 함께 보는 슬라이드형 페이지.
+ * 넓은 화면에서는 슬라이드 1장이 화면 1개에 맞도록 기본 글씨를 화면 높이·너비에 비례시키고(최대 22px),
+ * 스크롤이 슬라이드 단위로 멈추게 한다.
+ */
 html:has(.theme-brief) {
   font-size: 18px;
 }
 
 @media (min-width: 1024px) {
   html:has(.theme-brief) {
-    font-size: 22px;
+    font-size: clamp(15px, min(2.15vh, 1.45vw), 22px);
+    scroll-snap-type: y mandatory;
   }
 }
 
@@ -161,24 +166,25 @@ html:has(.theme-brief) {
  *  - 모서리·글씨 단계는 아래 md-* 유틸리티와 페이지 클래스로 맞춘다
  */
 .theme-brief {
-  --md-primary: #6750a4;
+  /* 보고 화면용 톤: 기본 보라 대신 차분한 남색 primary + 따뜻한 회백색 surface */
+  --md-primary: #2f4b6e;
   --md-on-primary: #ffffff;
-  --md-primary-container: #eaddff;
-  --md-on-primary-container: #21005d;
-  --md-secondary-container: #e8def8;
-  --md-on-secondary-container: #1d192b;
-  --md-surface: #fef7ff;
+  --md-primary-container: #d8e3f2;
+  --md-on-primary-container: #0d1f36;
+  --md-secondary-container: #e4e8ee;
+  --md-on-secondary-container: #18202b;
+  --md-surface: #fafaf7;
   --md-surface-container-lowest: #ffffff;
-  --md-surface-container-low: #f7f2fa;
-  --md-surface-container: #f3edf7;
-  --md-surface-container-high: #ece6f0;
-  --md-surface-container-highest: #e6e0e9;
-  --md-on-surface: #1d1b20;
-  --md-on-surface-variant: #49454f;
-  --md-outline: #79747e;
-  --md-outline-variant: #cac4d0;
-  --md-inverse-surface: #322f35;
-  --md-inverse-on-surface: #f5eff7;
+  --md-surface-container-low: #f4f4f0;
+  --md-surface-container: #efefea;
+  --md-surface-container-high: #e9e9e3;
+  --md-surface-container-highest: #e3e3dc;
+  --md-on-surface: #1b1c1e;
+  --md-on-surface-variant: #50535a;
+  --md-outline: #7c7f85;
+  --md-outline-variant: #d6d6d0;
+  --md-inverse-surface: #1f2a38;
+  --md-inverse-on-surface: #f1f2ef;
 
   /* 서비스 custom color: color / container / on-container */
   --brief-seniornote: #626234;

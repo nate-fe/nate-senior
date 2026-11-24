@@ -34,7 +34,7 @@ export function NavigationDrawer({ sections }: { sections: readonly { id: string
   return (
     <aside className="sticky top-0 hidden h-screen w-[300px] shrink-0 flex-col bg-md-surface-container-low px-3 py-8 xl:flex">
       <p className="md-title-medium px-4 text-md-on-surface-variant">Senior Platform</p>
-      <p className="md-title-large px-4 pt-1 pb-6 text-md-on-surface">UI 브리핑</p>
+      <p className="md-title-large px-4 pt-1 pb-6 text-md-on-surface">서비스 브리핑</p>
       <nav aria-label="목차" className="flex flex-col gap-1">
         {sections.map((s, i) => {
           const selected = active === s.id;
